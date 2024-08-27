@@ -1,5 +1,19 @@
 const trainModel = require("../models/trainModel");
 
+// Simulate storing your API key in an environment variable
+const API_KEY = process.env.API_KEY;
+
+// Middleware to validate the API key
+const validateApiKey = (req, res, next) => {
+  const apiKey = req.headers["x-api-key"];
+
+  if (apiKey && apiKey === API_KEY) {
+    next(); // Continue to the next middleware or route handler
+  } else {
+    res.status(401).json({ message: "Unauthorized: Invalid API Key" });
+  }
+};
+
 //Add New Train_Data
 const addNewTrainData = async (req, res) => {
   try {
@@ -41,4 +55,4 @@ const getTrain = async (req, res) => {
   }
 };
 
-module.exports = { addNewTrainData, getTrain };
+module.exports = { addNewTrainData, getTrain, validateApiKey };
