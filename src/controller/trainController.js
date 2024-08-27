@@ -18,4 +18,27 @@ const addNewTrainData = async (req, res) => {
   }
 };
 
-module.exports = addNewTrainData;
+//Get Train_Data
+const getTrain = async (req, res) => {
+  const { trainId } = req.params;
+
+  try {
+    // Find the latest entry for the given trainId
+    const latestData = await trainModel
+      .findOne({ trainId })
+      .sort({ timestamp: -1 })
+      .limit(1);
+
+    if (latestData) {
+      res.json(latestData);
+    } else {
+      res.status(404).json({ message: "No data found for this train" });
+    }
+  } catch (error) {
+    res
+      .status(500)
+      .json({ message: "Error fetching data", error: error.message });
+  }
+};
+
+module.exports = { addNewTrainData, getTrain };
