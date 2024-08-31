@@ -18,4 +18,4 @@ const trainSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model(" train", trainSchema);
+module.exports = mongoose.models.train || mongoose.model("train", trainSchema);
