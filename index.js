@@ -24,6 +24,8 @@ const handler = async (event, context) => {
       .catch((error) => {
         console.log(error);
       });
+    console.log("event");
+    console.log(event);
     if (event.requestContext) {
       response = await expressApp(event, context);
       return response;

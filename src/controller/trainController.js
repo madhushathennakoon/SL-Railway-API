@@ -35,6 +35,7 @@ const addNewTrainData = async (req, res) => {
 
 //Get Train_Data
 const getTrain = async (req, res) => {
+  console.log("Inside get train");
   const { trainId } = req.params;
 
   try {
