@@ -28,6 +28,7 @@ const addNewTrainData = async (req, res) => {
     });
     res.status(201).json(newtrain);
   } catch (error) {
+    console.error(error);
     res.status(500).json({ error: error.message });
   }
 };
@@ -49,6 +50,7 @@ const getTrain = async (req, res) => {
       res.status(404).json({ message: "No data found for this train" });
     }
   } catch (error) {
+    console.error(error);
     res
       .status(500)
       .json({ message: "Error fetching data", error: error.message });
