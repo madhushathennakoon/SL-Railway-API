@@ -37,6 +37,8 @@ const addNewTrainData = async (req, res) => {
 const getTrain = async (req, res) => {
   console.log("Inside get train");
   const { trainId } = req.params;
+  console.log("trainId - ");
+  console.log(trainId);
 
   try {
     // Find the latest entry for the given trainId
@@ -45,13 +47,14 @@ const getTrain = async (req, res) => {
       .sort({ timestamp: -1 })
       .limit(1);
 
+    console.log(latestData);
     if (latestData) {
       res.json(latestData);
     } else {
       res.status(404).json({ message: "No data found for this train" });
     }
   } catch (error) {
-    console.error(error);
+    console.log(error);
     res
       .status(500)
       .json({ message: "Error fetching data", error: error.message });
