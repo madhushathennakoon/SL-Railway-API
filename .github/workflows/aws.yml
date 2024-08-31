@@ -20,7 +20,7 @@ jobs:
         node-version: '20'  # Ensure it matches the version in Lambda
 
     - name: Install dependencies
-      run: npm install
+      run: npm install --production
 
     - name: Zip the function
       run: zip -r function.zip .  # Zipping the entire project

@@ -1,0 +1,22 @@
+service: sl-railway-api
+frameworkVersion: "3"
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  region: ap-southeast-1
+
+functions:
+  api:
+    handler: index.handler
+    events:
+      - httpApi: "*"
+
+plugins:
+  - serverless-offline
+
+custom:
+  serverless-offline:
+    # httpPort: 4000
+    # lambdaPort: 4200
+    noPrependStageInUrl: true
