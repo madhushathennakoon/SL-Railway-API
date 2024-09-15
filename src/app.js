@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(cors());
 
 const swaggerJSDocs = YAML.load("./swagger-docs.yaml");
-app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerJSDocs));
+app.use("/api/swagger", swaggerUI.serve, swaggerUI.setup(swaggerJSDocs));
 
 // Routes
 app.use("/api/train", trainRouter);
