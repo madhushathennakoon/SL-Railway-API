@@ -39,12 +39,12 @@ jobs:
           --zip-file fileb://function.zip \
           --region ap-southeast-1
 
-    - name: Update Lambda environment variables
-      run: |
-        aws lambda update-function-configuration \
-          --function-name sl-railway-api \
-          --environment "Variables={MONG_URI=${{ secrets.MONG_URI }},API_KEY=${{ secrets.API_KEY }}}" \
-          --region ap-southeast-1
+    # - name: Update Lambda environment variables
+    #   run: |
+    #     aws lambda update-function-configuration \
+    #       --function-name sl-railway-api \
+    #       --environment "Variables={MONG_URI=${{ secrets.MONG_URI }},API_KEY=${{ secrets.API_KEY }}}" \
+    #       --region ap-southeast-1
 
     - name: Notify success
       run: echo "Deployment successful!"
